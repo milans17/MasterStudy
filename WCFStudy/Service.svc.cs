@@ -802,29 +802,32 @@ namespace WCFStudy
             {
                 List<ExamRegistration> examRegistrations = new List<ExamRegistration>();
 
-                var exam = dbContext.tblExams.SingleOrDefault(x => x.ExamPeriodId == examPeriodId && x.CourseId == courseId);
+                var exam = dbContext.tblExams.FirstOrDefault(x => x.ExamPeriodId == examPeriodId && x.CourseId == courseId);
 
                 if (exam == null)
                     return new List<ExamRegistration>();
 
-                var dbStudents = (from s in dbContext.tblStudents select s).ToList();
-                var examQuery = (from examReg in dbContext.tblExamRegistrations
-                                 where examReg.ExamId == exam.ExamId && examReg.IsRegistred == true
+                var dbStudentIds = (from s in dbContext.tblStudents
+                                    select s.StudentId).ToList();
+
+                var examQuery = (from examReg in dbContext.ExamRegistrationView
+                                 where examReg.ExamId == exam.ExamId
+                                 && examReg.IsRegistred == true
                                  select examReg).ToList();
 
-                for (int i = 0; i < examQuery.Count(); i++)
+                foreach (var examReg in examQuery)
                 {
-                    for (int j = 0; j < dbStudents.Count(); j++)
+                    foreach (var dbStudentId in dbStudentIds)
                     {
-                        if (examQuery[i].StudentId == dbStudents[j].StudentId)
+                        if (examReg.StudentId == dbStudentId)
                         {
-                            ExamRegistration er = new ExamRegistration()
+                            ExamRegistration examRegistration = new ExamRegistration()
                             {
-                                ExamRegistrationId = examQuery[i].ExamRegistrationId,
-                                StudentNameAndSurname = dbStudents[j].NameAndSurname
+                                ExamRegistrationId = examReg.ExamRegistrationId,
+                                StudentNameAndSurname = examReg.NameAndSurname
                             };
 
-                            examRegistrations.Add(er);
+                            examRegistrations.Add(examRegistration);
                         }
                     }
                 }
