@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="473113c810864f6e9cc5cb4cc34f5bf4" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentDbModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblCalendars" Width="1.5" PointX="12" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblCourses" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblDepartments" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblExamPeriods" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblExamRegistrations" Width="1.5" PointX="9.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblExamResults" Width="1.5" PointX="12" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblExams" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblProfessors" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblStudents" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblStudyPrograms" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.tblTasks" Width="1.5" PointX="7.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.CourseView" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.StudentView" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentDbModel.StudyProgramView" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="StudentDbModel.FK_tblCalendars_tblExamRegistrations" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblCalendars_tblTasks" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblCourses_tblProfessors" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblCourses_tblStudyPrograms" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblExams_tblCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblTasks_tblCourses" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblStudyPrograms_tblDepartments" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblExams_tblExamPeriods" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_ExamResults_tblExamRegistrations" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblExamRegistrations_tblExams" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblExamRegistrations_tblStudents" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblStudents_tblStudyPrograms" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentDbModel.FK_tblTasks_tblStudents" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="StudentDbModel.ExamView" Width="1.5" PointX="14.375" PointY="0.75" />
+        <EntityTypeShape EntityType="StudentDbModel.ExamRegistrationView" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="StudentDbModel.ExamResultView" Width="1.5" PointX="3.375" PointY="14.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

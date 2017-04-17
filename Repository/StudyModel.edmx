@@ -1,0 +1,1282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="StudentDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblCalendars">
+          <Key>
+            <PropertyRef Name="CalendarId" />
+          </Key>
+          <Property Name="CalendarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaskId" Type="int" />
+          <Property Name="ExamRegistrationId" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCourses">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudyProgramId" Type="int" Nullable="false" />
+          <Property Name="ProfessorId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Assistant" Type="nvarchar" MaxLength="50" />
+          <Property Name="ETCS" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDepartments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FoundationYear" Type="int" />
+          <Property Name="DepartmentHead" Type="nvarchar" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblExamPeriods">
+          <Key>
+            <PropertyRef Name="ExamPeriodId" />
+          </Key>
+          <Property Name="ExamPeriodId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="SchoolYear" Type="int" Nullable="false" />
+          <Property Name="IsApsolvent" Type="bit" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblExamRegistrations">
+          <Key>
+            <PropertyRef Name="ExamRegistrationId" />
+          </Key>
+          <Property Name="ExamRegistrationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="ExamId" Type="int" Nullable="false" />
+          <Property Name="IsRegistred" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblExamResults">
+          <Key>
+            <PropertyRef Name="ExamResultsId" />
+          </Key>
+          <Property Name="ExamResultsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamRegistrationId" Type="int" Nullable="false" />
+          <Property Name="TermPaper" Type="int" />
+          <Property Name="FirstTest" Type="int" />
+          <Property Name="SecondTest" Type="int" />
+          <Property Name="WritenExam" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Evaluation" Type="int" />
+        </EntityType>
+        <EntityType Name="tblExams">
+          <Key>
+            <PropertyRef Name="ExamId" />
+          </Key>
+          <Property Name="ExamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExamPeriodId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+          <Property Name="Place" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsPassed" Type="bit" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <EntityType Name="tblProfessors">
+          <Key>
+            <PropertyRef Name="ProfessorId" />
+          </Key>
+          <Property Name="ProfessorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="NameAndSurname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="BirthPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Education" Type="nvarchar" MaxLength="50" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblStudents">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudyProgramId" Type="int" Nullable="false" />
+          <Property Name="NameAndSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudyYear" Type="int" />
+          <Property Name="Balance" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblStudyPrograms">
+          <Key>
+            <PropertyRef Name="StudyProgramId" />
+          </Key>
+          <Property Name="StudyProgramId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BudgetPlaces" Type="int" />
+          <Property Name="SelffinancedPlaces" Type="int" />
+          <Property Name="Tuition" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTasks">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.CourseView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CourseView">
+          <Key>
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="StudyProgramId" />
+            <PropertyRef Name="ProfessorId" />
+          </Key>
+          <Property Name="StudyProgramName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="StudyProgramId" Type="int" Nullable="false" />
+          <Property Name="ProfessorId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Assistant" Type="nvarchar" MaxLength="50" />
+          <Property Name="ETCS" Type="int" />
+          <Property Name="ProfessorName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.ExamRegistrationView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExamRegistrationView">
+          <Key>
+            <PropertyRef Name="ExamRegistrationId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="ExamId" />
+            <PropertyRef Name="IsRegistred" />
+          </Key>
+          <Property Name="ExamRegistrationId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="ExamId" Type="int" Nullable="false" />
+          <Property Name="IsRegistred" Type="bit" Nullable="false" />
+          <Property Name="NameAndSurname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.ExamResultView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExamResultView">
+          <Key>
+            <PropertyRef Name="ExamResultsId" />
+            <PropertyRef Name="ExamRegistrationId" />
+          </Key>
+          <Property Name="NameAndSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExamResultsId" Type="int" Nullable="false" />
+          <Property Name="ExamRegistrationId" Type="int" Nullable="false" />
+          <Property Name="TermPaper" Type="int" />
+          <Property Name="FirstTest" Type="int" />
+          <Property Name="SecondTest" Type="int" />
+          <Property Name="WritenExam" Type="int" />
+          <Property Name="Total" Type="int" />
+          <Property Name="Evaluation" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.ExamView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExamView">
+          <Key>
+            <PropertyRef Name="ExamId" />
+            <PropertyRef Name="ExamPeriodId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="ExamId" Type="int" Nullable="false" />
+          <Property Name="ExamPeriodId" Type="int" Nullable="false" />
+          <Property Name="CourseId" Type="int" Nullable="false" />
+          <Property Name="DateAndTime" Type="datetime" />
+          <Property Name="Place" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsPassed" Type="bit" />
+          <Property Name="Price" Type="int" />
+          <Property Name="ExamPeriodName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.StudentView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudentView">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudyProgramId" />
+          </Key>
+          <Property Name="StudyProgramName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmantName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="StudentId" Type="int" Nullable="false" />
+          <Property Name="StudyProgramId" Type="int" Nullable="false" />
+          <Property Name="NameAndSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDate" Type="datetime" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="StudyYear" Type="int" />
+          <Property Name="Balance" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'StudentDb.dbo.StudyProgramView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="StudyProgramView">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="StudyProgramId" />
+            <PropertyRef Name="SPdepartmentId" />
+          </Key>
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="50" />
+          <Property Name="DepartmentId" Type="int" Nullable="false" />
+          <Property Name="StudyProgramId" Type="int" Nullable="false" />
+          <Property Name="SPdepartmentId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BudgetPlaces" Type="int" />
+          <Property Name="SelffinancedPlaces" Type="int" />
+          <Property Name="Tuition" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblCalendars_tblExamRegistrations">
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="0..1" />
+          <End Role="tblCalendars" Type="Self.tblCalendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExamRegistrations">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Principal>
+            <Dependent Role="tblCalendars">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCalendars_tblTasks">
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="0..1" />
+          <End Role="tblCalendars" Type="Self.tblCalendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="tblCalendars">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourses_tblProfessors">
+          <End Role="tblProfessors" Type="Self.tblProfessors" Multiplicity="1" />
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfessors">
+              <PropertyRef Name="ProfessorId" />
+            </Principal>
+            <Dependent Role="tblCourses">
+              <PropertyRef Name="ProfessorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourses_tblStudyPrograms">
+          <End Role="tblStudyPrograms" Type="Self.tblStudyPrograms" Multiplicity="1" />
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudyPrograms">
+              <PropertyRef Name="StudyProgramId" />
+            </Principal>
+            <Dependent Role="tblCourses">
+              <PropertyRef Name="StudyProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExamRegistrations_tblExams">
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="1" />
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExams">
+              <PropertyRef Name="ExamId" />
+            </Principal>
+            <Dependent Role="tblExamRegistrations">
+              <PropertyRef Name="ExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExamRegistrations_tblStudents">
+          <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="1" />
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudents">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblExamRegistrations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExams_tblCourses">
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="1" />
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblExams">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExams_tblExamPeriods">
+          <End Role="tblExamPeriods" Type="Self.tblExamPeriods" Multiplicity="1" />
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExamPeriods">
+              <PropertyRef Name="ExamPeriodId" />
+            </Principal>
+            <Dependent Role="tblExams">
+              <PropertyRef Name="ExamPeriodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudyPrograms_tblDepartments">
+          <End Role="tblDepartments" Type="Self.tblDepartments" Multiplicity="1" />
+          <End Role="tblStudyPrograms" Type="Self.tblStudyPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="tblStudyPrograms">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTasks_tblCourses">
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="1" />
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblTasks">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTasks_tblStudents">
+          <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="1" />
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudents">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblTasks">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentDbModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCalendars" EntityType="Self.tblCalendars" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCourses" EntityType="Self.tblCourses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDepartments" EntityType="Self.tblDepartments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExamPeriods" EntityType="Self.tblExamPeriods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExamRegistrations" EntityType="Self.tblExamRegistrations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExamResults" EntityType="Self.tblExamResults" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExams" EntityType="Self.tblExams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProfessors" EntityType="Self.tblProfessors" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudents" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStudyPrograms" EntityType="Self.tblStudyPrograms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTasks" EntityType="Self.tblTasks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CourseView" EntityType="Self.CourseView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CourseView].[StudyProgramName] AS [StudyProgramName], 
+[CourseView].[CourseId] AS [CourseId], 
+[CourseView].[StudyProgramId] AS [StudyProgramId], 
+[CourseView].[ProfessorId] AS [ProfessorId], 
+[CourseView].[Name] AS [Name], 
+[CourseView].[Assistant] AS [Assistant], 
+[CourseView].[ETCS] AS [ETCS], 
+[CourseView].[ProfessorName] AS [ProfessorName]
+FROM [dbo].[CourseView] AS [CourseView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExamRegistrationView" EntityType="Self.ExamRegistrationView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ExamRegistrationView].[ExamRegistrationId] AS [ExamRegistrationId], 
+[ExamRegistrationView].[StudentId] AS [StudentId], 
+[ExamRegistrationView].[ExamId] AS [ExamId], 
+[ExamRegistrationView].[IsRegistred] AS [IsRegistred], 
+[ExamRegistrationView].[NameAndSurname] AS [NameAndSurname]
+FROM [dbo].[ExamRegistrationView] AS [ExamRegistrationView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExamResultView" EntityType="Self.ExamResultView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ExamResultView].[NameAndSurname] AS [NameAndSurname], 
+[ExamResultView].[ExamResultsId] AS [ExamResultsId], 
+[ExamResultView].[ExamRegistrationId] AS [ExamRegistrationId], 
+[ExamResultView].[TermPaper] AS [TermPaper], 
+[ExamResultView].[FirstTest] AS [FirstTest], 
+[ExamResultView].[SecondTest] AS [SecondTest], 
+[ExamResultView].[WritenExam] AS [WritenExam], 
+[ExamResultView].[Total] AS [Total], 
+[ExamResultView].[Evaluation] AS [Evaluation]
+FROM [dbo].[ExamResultView] AS [ExamResultView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ExamView" EntityType="Self.ExamView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[ExamView].[ExamId] AS [ExamId], 
+[ExamView].[ExamPeriodId] AS [ExamPeriodId], 
+[ExamView].[CourseId] AS [CourseId], 
+[ExamView].[DateAndTime] AS [DateAndTime], 
+[ExamView].[Place] AS [Place], 
+[ExamView].[IsPassed] AS [IsPassed], 
+[ExamView].[Price] AS [Price], 
+[ExamView].[ExamPeriodName] AS [ExamPeriodName], 
+[ExamView].[CourseName] AS [CourseName]
+FROM [dbo].[ExamView] AS [ExamView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudentView" EntityType="Self.StudentView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[StudentView].[StudyProgramName] AS [StudyProgramName], 
+[StudentView].[DepartmantName] AS [DepartmantName], 
+[StudentView].[DepartmentId] AS [DepartmentId], 
+[StudentView].[StudentId] AS [StudentId], 
+[StudentView].[StudyProgramId] AS [StudyProgramId], 
+[StudentView].[NameAndSurname] AS [NameAndSurname], 
+[StudentView].[BirthPlace] AS [BirthPlace], 
+[StudentView].[BirthDate] AS [BirthDate], 
+[StudentView].[Address] AS [Address], 
+[StudentView].[Phone] AS [Phone], 
+[StudentView].[StudyYear] AS [StudyYear], 
+[StudentView].[Balance] AS [Balance], 
+[StudentView].[Username] AS [Username], 
+[StudentView].[Password] AS [Password]
+FROM [dbo].[StudentView] AS [StudentView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="StudyProgramView" EntityType="Self.StudyProgramView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[StudyProgramView].[DepartmentName] AS [DepartmentName], 
+[StudyProgramView].[DepartmentId] AS [DepartmentId], 
+[StudyProgramView].[StudyProgramId] AS [StudyProgramId], 
+[StudyProgramView].[SPdepartmentId] AS [SPdepartmentId], 
+[StudyProgramView].[Name] AS [Name], 
+[StudyProgramView].[BudgetPlaces] AS [BudgetPlaces], 
+[StudyProgramView].[SelffinancedPlaces] AS [SelffinancedPlaces], 
+[StudyProgramView].[Tuition] AS [Tuition]
+FROM [dbo].[StudyProgramView] AS [StudyProgramView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_tblCalendars_tblExamRegistrations" Association="Self.FK_tblCalendars_tblExamRegistrations">
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+            <End Role="tblCalendars" EntitySet="tblCalendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCalendars_tblTasks" Association="Self.FK_tblCalendars_tblTasks">
+            <End Role="tblTasks" EntitySet="tblTasks" />
+            <End Role="tblCalendars" EntitySet="tblCalendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourses_tblProfessors" Association="Self.FK_tblCourses_tblProfessors">
+            <End Role="tblProfessors" EntitySet="tblProfessors" />
+            <End Role="tblCourses" EntitySet="tblCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourses_tblStudyPrograms" Association="Self.FK_tblCourses_tblStudyPrograms">
+            <End Role="tblStudyPrograms" EntitySet="tblStudyPrograms" />
+            <End Role="tblCourses" EntitySet="tblCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExamRegistrations_tblExams" Association="Self.FK_tblExamRegistrations_tblExams">
+            <End Role="tblExams" EntitySet="tblExams" />
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExamRegistrations_tblStudents" Association="Self.FK_tblExamRegistrations_tblStudents">
+            <End Role="tblStudents" EntitySet="tblStudents" />
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExams_tblCourses" Association="Self.FK_tblExams_tblCourses">
+            <End Role="tblCourses" EntitySet="tblCourses" />
+            <End Role="tblExams" EntitySet="tblExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExams_tblExamPeriods" Association="Self.FK_tblExams_tblExamPeriods">
+            <End Role="tblExamPeriods" EntitySet="tblExamPeriods" />
+            <End Role="tblExams" EntitySet="tblExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudyPrograms_tblDepartments" Association="Self.FK_tblStudyPrograms_tblDepartments">
+            <End Role="tblDepartments" EntitySet="tblDepartments" />
+            <End Role="tblStudyPrograms" EntitySet="tblStudyPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTasks_tblCourses" Association="Self.FK_tblTasks_tblCourses">
+            <End Role="tblCourses" EntitySet="tblCourses" />
+            <End Role="tblTasks" EntitySet="tblTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTasks_tblStudents" Association="Self.FK_tblTasks_tblStudents">
+            <End Role="tblStudents" EntitySet="tblStudents" />
+            <End Role="tblTasks" EntitySet="tblTasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StudentDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblCalendars">
+          <Key>
+            <PropertyRef Name="CalendarId" />
+          </Key>
+          <Property Name="CalendarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskId" Type="Int32" />
+          <Property Name="ExamRegistrationId" Type="Int32" />
+          <NavigationProperty Name="tblExamRegistrations" Relationship="Self.FK_tblCalendars_tblExamRegistrations" FromRole="tblCalendars" ToRole="tblExamRegistrations" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.FK_tblCalendars_tblTasks" FromRole="tblCalendars" ToRole="tblTasks" />
+        </EntityType>
+        <EntityType Name="tblCourses">
+          <Key>
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessorId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Assistant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ETCS" Type="Int32" />
+          <NavigationProperty Name="tblProfessors" Relationship="Self.FK_tblCourses_tblProfessors" FromRole="tblCourses" ToRole="tblProfessors" />
+          <NavigationProperty Name="tblStudyPrograms" Relationship="Self.FK_tblCourses_tblStudyPrograms" FromRole="tblCourses" ToRole="tblStudyPrograms" />
+          <NavigationProperty Name="tblExams" Relationship="Self.FK_tblExams_tblCourses" FromRole="tblCourses" ToRole="tblExams" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.FK_tblTasks_tblCourses" FromRole="tblCourses" ToRole="tblTasks" />
+        </EntityType>
+        <EntityType Name="tblDepartments">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+          </Key>
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FoundationYear" Type="Int32" />
+          <Property Name="DepartmentHead" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblStudyPrograms" Relationship="Self.FK_tblStudyPrograms_tblDepartments" FromRole="tblDepartments" ToRole="tblStudyPrograms" />
+        </EntityType>
+        <EntityType Name="tblExamPeriods">
+          <Key>
+            <PropertyRef Name="ExamPeriodId" />
+          </Key>
+          <Property Name="ExamPeriodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="SchoolYear" Type="Int32" Nullable="false" />
+          <Property Name="IsApsolvent" Type="Boolean" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblExams" Relationship="Self.FK_tblExams_tblExamPeriods" FromRole="tblExamPeriods" ToRole="tblExams" />
+        </EntityType>
+        <EntityType Name="tblExamRegistrations">
+          <Key>
+            <PropertyRef Name="ExamRegistrationId" />
+          </Key>
+          <Property Name="ExamRegistrationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ExamId" Type="Int32" Nullable="false" />
+          <Property Name="IsRegistred" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="tblCalendars" Relationship="Self.FK_tblCalendars_tblExamRegistrations" FromRole="tblExamRegistrations" ToRole="tblCalendars" />
+          <NavigationProperty Name="tblExamResults" Relationship="Self.FK_ExamResults_tblExamRegistrations" FromRole="tblExamRegistrations" ToRole="tblExamResults" />
+          <NavigationProperty Name="tblExams" Relationship="Self.FK_tblExamRegistrations_tblExams" FromRole="tblExamRegistrations" ToRole="tblExams" />
+          <NavigationProperty Name="tblStudents" Relationship="Self.FK_tblExamRegistrations_tblStudents" FromRole="tblExamRegistrations" ToRole="tblStudents" />
+        </EntityType>
+        <EntityType Name="tblExamResults">
+          <Key>
+            <PropertyRef Name="ExamResultsId" />
+          </Key>
+          <Property Name="ExamResultsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamRegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="TermPaper" Type="Int32" />
+          <Property Name="FirstTest" Type="Int32" />
+          <Property Name="SecondTest" Type="Int32" />
+          <Property Name="WritenExam" Type="Int32" />
+          <Property Name="Evaluation" Type="Int32" />
+          <NavigationProperty Name="tblExamRegistrations" Relationship="Self.FK_ExamResults_tblExamRegistrations" FromRole="tblExamResults" ToRole="tblExamRegistrations" />
+          <Property Name="Total" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblExams">
+          <Key>
+            <PropertyRef Name="ExamId" />
+          </Key>
+          <Property Name="ExamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExamPeriodId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="DateAndTime" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsPassed" Type="Boolean" />
+          <Property Name="Price" Type="Int32" />
+          <NavigationProperty Name="tblCourses" Relationship="Self.FK_tblExams_tblCourses" FromRole="tblExams" ToRole="tblCourses" />
+          <NavigationProperty Name="tblExamPeriods" Relationship="Self.FK_tblExams_tblExamPeriods" FromRole="tblExams" ToRole="tblExamPeriods" />
+          <NavigationProperty Name="tblExamRegistrations" Relationship="Self.FK_tblExamRegistrations_tblExams" FromRole="tblExams" ToRole="tblExamRegistrations" />
+        </EntityType>
+        <EntityType Name="tblProfessors">
+          <Key>
+            <PropertyRef Name="ProfessorId" />
+          </Key>
+          <Property Name="ProfessorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="NameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Education" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblCourses" Relationship="Self.FK_tblCourses_tblProfessors" FromRole="tblProfessors" ToRole="tblCourses" />
+        </EntityType>
+        <EntityType Name="tblStudents">
+          <Key>
+            <PropertyRef Name="StudentId" />
+          </Key>
+          <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" />
+          <Property Name="NameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudyYear" Type="Int32" />
+          <Property Name="Balance" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblExamRegistrations" Relationship="Self.FK_tblExamRegistrations_tblStudents" FromRole="tblStudents" ToRole="tblExamRegistrations" />
+          <NavigationProperty Name="tblStudyPrograms" Relationship="Self.FK_tblStudents_tblStudyPrograms" FromRole="tblStudents" ToRole="tblStudyPrograms" />
+          <NavigationProperty Name="tblTasks" Relationship="Self.FK_tblTasks_tblStudents" FromRole="tblStudents" ToRole="tblTasks" />
+        </EntityType>
+        <EntityType Name="tblStudyPrograms">
+          <Key>
+            <PropertyRef Name="StudyProgramId" />
+          </Key>
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BudgetPlaces" Type="Int32" />
+          <Property Name="SelffinancedPlaces" Type="Int32" />
+          <Property Name="Tuition" Type="Int32" />
+          <NavigationProperty Name="tblCourses" Relationship="Self.FK_tblCourses_tblStudyPrograms" FromRole="tblStudyPrograms" ToRole="tblCourses" />
+          <NavigationProperty Name="tblDepartments" Relationship="Self.FK_tblStudyPrograms_tblDepartments" FromRole="tblStudyPrograms" ToRole="tblDepartments" />
+          <NavigationProperty Name="tblStudents" Relationship="Self.FK_tblStudents_tblStudyPrograms" FromRole="tblStudyPrograms" ToRole="tblStudents" />
+        </EntityType>
+        <EntityType Name="tblTasks">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tblCalendars" Relationship="Self.FK_tblCalendars_tblTasks" FromRole="tblTasks" ToRole="tblCalendars" />
+          <NavigationProperty Name="tblCourses" Relationship="Self.FK_tblTasks_tblCourses" FromRole="tblTasks" ToRole="tblCourses" />
+          <NavigationProperty Name="tblStudents" Relationship="Self.FK_tblTasks_tblStudents" FromRole="tblTasks" ToRole="tblStudents" />
+        </EntityType>
+        <EntityType Name="CourseView">
+          <Key>
+            <PropertyRef Name="CourseId" />
+            <PropertyRef Name="StudyProgramId" />
+            <PropertyRef Name="ProfessorId" />
+          </Key>
+          <Property Name="StudyProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" />
+          <Property Name="ProfessorId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Assistant" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ETCS" Type="Int32" />
+          <Property Name="ProfessorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudentView">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="StudyProgramId" />
+          </Key>
+          <Property Name="StudyProgramName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmantName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" />
+          <Property Name="NameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDate" Type="DateTime" Precision="3" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StudyYear" Type="Int32" />
+          <Property Name="Balance" Type="Int32" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="StudyProgramView">
+          <Key>
+            <PropertyRef Name="DepartmentId" />
+            <PropertyRef Name="StudyProgramId" />
+            <PropertyRef Name="SPdepartmentId" />
+          </Key>
+          <Property Name="DepartmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="StudyProgramId" Type="Int32" Nullable="false" />
+          <Property Name="SPdepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BudgetPlaces" Type="Int32" />
+          <Property Name="SelffinancedPlaces" Type="Int32" />
+          <Property Name="Tuition" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_tblCalendars_tblExamRegistrations">
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="0..1" />
+          <End Role="tblCalendars" Type="Self.tblCalendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExamRegistrations">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Principal>
+            <Dependent Role="tblCalendars">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCalendars_tblTasks">
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="0..1" />
+          <End Role="tblCalendars" Type="Self.tblCalendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTasks">
+              <PropertyRef Name="TaskId" />
+            </Principal>
+            <Dependent Role="tblCalendars">
+              <PropertyRef Name="TaskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourses_tblProfessors">
+          <End Role="tblProfessors" Type="Self.tblProfessors" Multiplicity="1" />
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblProfessors">
+              <PropertyRef Name="ProfessorId" />
+            </Principal>
+            <Dependent Role="tblCourses">
+              <PropertyRef Name="ProfessorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblCourses_tblStudyPrograms">
+          <End Role="tblStudyPrograms" Type="Self.tblStudyPrograms" Multiplicity="1" />
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudyPrograms">
+              <PropertyRef Name="StudyProgramId" />
+            </Principal>
+            <Dependent Role="tblCourses">
+              <PropertyRef Name="StudyProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExams_tblCourses">
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="1" />
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblExams">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTasks_tblCourses">
+          <End Role="tblCourses" Type="Self.tblCourses" Multiplicity="1" />
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblCourses">
+              <PropertyRef Name="CourseId" />
+            </Principal>
+            <Dependent Role="tblTasks">
+              <PropertyRef Name="CourseId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudyPrograms_tblDepartments">
+          <End Role="tblDepartments" Type="Self.tblDepartments" Multiplicity="1" />
+          <End Role="tblStudyPrograms" Type="Self.tblStudyPrograms" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblDepartments">
+              <PropertyRef Name="DepartmentId" />
+            </Principal>
+            <Dependent Role="tblStudyPrograms">
+              <PropertyRef Name="DepartmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExams_tblExamPeriods">
+          <End Role="tblExamPeriods" Type="Self.tblExamPeriods" Multiplicity="1" />
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExamPeriods">
+              <PropertyRef Name="ExamPeriodId" />
+            </Principal>
+            <Dependent Role="tblExams">
+              <PropertyRef Name="ExamPeriodId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExamResults_tblExamRegistrations">
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="1" />
+          <End Role="tblExamResults" Type="Self.tblExamResults" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExamRegistrations">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Principal>
+            <Dependent Role="tblExamResults">
+              <PropertyRef Name="ExamRegistrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExamRegistrations_tblExams">
+          <End Role="tblExams" Type="Self.tblExams" Multiplicity="1" />
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblExams">
+              <PropertyRef Name="ExamId" />
+            </Principal>
+            <Dependent Role="tblExamRegistrations">
+              <PropertyRef Name="ExamId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExamRegistrations_tblStudents">
+          <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="1" />
+          <End Role="tblExamRegistrations" Type="Self.tblExamRegistrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudents">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblExamRegistrations">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblStudents_tblStudyPrograms">
+          <End Role="tblStudyPrograms" Type="Self.tblStudyPrograms" Multiplicity="1" />
+          <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudyPrograms">
+              <PropertyRef Name="StudyProgramId" />
+            </Principal>
+            <Dependent Role="tblStudents">
+              <PropertyRef Name="StudyProgramId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblTasks_tblStudents">
+          <End Role="tblStudents" Type="Self.tblStudents" Multiplicity="1" />
+          <End Role="tblTasks" Type="Self.tblTasks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblStudents">
+              <PropertyRef Name="StudentId" />
+            </Principal>
+            <Dependent Role="tblTasks">
+              <PropertyRef Name="StudentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StudentDbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblCalendars" EntityType="Self.tblCalendars" />
+          <EntitySet Name="tblCourses" EntityType="Self.tblCourses" />
+          <EntitySet Name="tblDepartments" EntityType="Self.tblDepartments" />
+          <EntitySet Name="tblExamPeriods" EntityType="Self.tblExamPeriods" />
+          <EntitySet Name="tblExamRegistrations" EntityType="Self.tblExamRegistrations" />
+          <EntitySet Name="tblExamResults" EntityType="Self.tblExamResults" />
+          <EntitySet Name="tblExams" EntityType="Self.tblExams" />
+          <EntitySet Name="tblProfessors" EntityType="Self.tblProfessors" />
+          <EntitySet Name="tblStudents" EntityType="Self.tblStudents" />
+          <EntitySet Name="tblStudyPrograms" EntityType="Self.tblStudyPrograms" />
+          <EntitySet Name="tblTasks" EntityType="Self.tblTasks" />
+          <EntitySet Name="CourseView" EntityType="Self.CourseView" />
+          <EntitySet Name="StudentView" EntityType="Self.StudentView" />
+          <EntitySet Name="StudyProgramView" EntityType="Self.StudyProgramView" />
+          <AssociationSet Name="FK_tblCalendars_tblExamRegistrations" Association="Self.FK_tblCalendars_tblExamRegistrations">
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+            <End Role="tblCalendars" EntitySet="tblCalendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCalendars_tblTasks" Association="Self.FK_tblCalendars_tblTasks">
+            <End Role="tblTasks" EntitySet="tblTasks" />
+            <End Role="tblCalendars" EntitySet="tblCalendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourses_tblProfessors" Association="Self.FK_tblCourses_tblProfessors">
+            <End Role="tblProfessors" EntitySet="tblProfessors" />
+            <End Role="tblCourses" EntitySet="tblCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblCourses_tblStudyPrograms" Association="Self.FK_tblCourses_tblStudyPrograms">
+            <End Role="tblStudyPrograms" EntitySet="tblStudyPrograms" />
+            <End Role="tblCourses" EntitySet="tblCourses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExams_tblCourses" Association="Self.FK_tblExams_tblCourses">
+            <End Role="tblCourses" EntitySet="tblCourses" />
+            <End Role="tblExams" EntitySet="tblExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTasks_tblCourses" Association="Self.FK_tblTasks_tblCourses">
+            <End Role="tblCourses" EntitySet="tblCourses" />
+            <End Role="tblTasks" EntitySet="tblTasks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudyPrograms_tblDepartments" Association="Self.FK_tblStudyPrograms_tblDepartments">
+            <End Role="tblDepartments" EntitySet="tblDepartments" />
+            <End Role="tblStudyPrograms" EntitySet="tblStudyPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExams_tblExamPeriods" Association="Self.FK_tblExams_tblExamPeriods">
+            <End Role="tblExamPeriods" EntitySet="tblExamPeriods" />
+            <End Role="tblExams" EntitySet="tblExams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExamResults_tblExamRegistrations" Association="Self.FK_ExamResults_tblExamRegistrations">
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+            <End Role="tblExamResults" EntitySet="tblExamResults" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExamRegistrations_tblExams" Association="Self.FK_tblExamRegistrations_tblExams">
+            <End Role="tblExams" EntitySet="tblExams" />
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExamRegistrations_tblStudents" Association="Self.FK_tblExamRegistrations_tblStudents">
+            <End Role="tblStudents" EntitySet="tblStudents" />
+            <End Role="tblExamRegistrations" EntitySet="tblExamRegistrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblStudents_tblStudyPrograms" Association="Self.FK_tblStudents_tblStudyPrograms">
+            <End Role="tblStudyPrograms" EntitySet="tblStudyPrograms" />
+            <End Role="tblStudents" EntitySet="tblStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblTasks_tblStudents" Association="Self.FK_tblTasks_tblStudents">
+            <End Role="tblStudents" EntitySet="tblStudents" />
+            <End Role="tblTasks" EntitySet="tblTasks" />
+          </AssociationSet>
+          <EntitySet Name="ExamView" EntityType="StudentDbModel.ExamView" />
+          <EntitySet Name="ExamRegistrationView" EntityType="StudentDbModel.ExamRegistrationView" />
+          <EntitySet Name="ExamResultView" EntityType="StudentDbModel.ExamResultView" />
+        </EntityContainer>
+        <EntityType Name="ExamView">
+          <Key>
+            <PropertyRef Name="ExamId" />
+            <PropertyRef Name="ExamPeriodId" />
+            <PropertyRef Name="CourseId" />
+          </Key>
+          <Property Name="ExamId" Type="Int32" Nullable="false" />
+          <Property Name="ExamPeriodId" Type="Int32" Nullable="false" />
+          <Property Name="CourseId" Type="Int32" Nullable="false" />
+          <Property Name="DateAndTime" Type="DateTime" Precision="3" />
+          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsPassed" Type="Boolean" />
+          <Property Name="Price" Type="Int32" />
+          <Property Name="ExamPeriodName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExamRegistrationView">
+          <Key>
+            <PropertyRef Name="ExamRegistrationId" />
+            <PropertyRef Name="StudentId" />
+            <PropertyRef Name="ExamId" />
+            <PropertyRef Name="IsRegistred" />
+          </Key>
+          <Property Name="ExamRegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="StudentId" Type="Int32" Nullable="false" />
+          <Property Name="ExamId" Type="Int32" Nullable="false" />
+          <Property Name="IsRegistred" Type="Boolean" Nullable="false" />
+          <Property Name="NameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExamResultView">
+          <Key>
+            <PropertyRef Name="ExamResultsId" />
+            <PropertyRef Name="ExamRegistrationId" />
+          </Key>
+          <Property Name="NameAndSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExamResultsId" Type="Int32" Nullable="false" />
+          <Property Name="ExamRegistrationId" Type="Int32" Nullable="false" />
+          <Property Name="TermPaper" Type="Int32" />
+          <Property Name="FirstTest" Type="Int32" />
+          <Property Name="SecondTest" Type="Int32" />
+          <Property Name="WritenExam" Type="Int32" />
+          <Property Name="Total" Type="Int32" />
+          <Property Name="Evaluation" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StudentDbModelStoreContainer" CdmEntityContainer="StudentDbEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="StudentDbModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCalendars">
+            <EntityTypeMapping TypeName="StudentDbModel.tblCalendars">
+              <MappingFragment StoreEntitySet="tblCalendars">
+                <ScalarProperty Name="CalendarId" ColumnName="CalendarId" />
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="ExamRegistrationId" ColumnName="ExamRegistrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCourses">
+            <EntityTypeMapping TypeName="StudentDbModel.tblCourses">
+              <MappingFragment StoreEntitySet="tblCourses">
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Assistant" ColumnName="Assistant" />
+                <ScalarProperty Name="ETCS" ColumnName="ETCS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDepartments">
+            <EntityTypeMapping TypeName="StudentDbModel.tblDepartments">
+              <MappingFragment StoreEntitySet="tblDepartments">
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FoundationYear" ColumnName="FoundationYear" />
+                <ScalarProperty Name="DepartmentHead" ColumnName="DepartmentHead" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExamPeriods">
+            <EntityTypeMapping TypeName="StudentDbModel.tblExamPeriods">
+              <MappingFragment StoreEntitySet="tblExamPeriods">
+                <ScalarProperty Name="ExamPeriodId" ColumnName="ExamPeriodId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="SchoolYear" ColumnName="SchoolYear" />
+                <ScalarProperty Name="IsApsolvent" ColumnName="IsApsolvent" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExamRegistrations">
+            <EntityTypeMapping TypeName="StudentDbModel.tblExamRegistrations">
+              <MappingFragment StoreEntitySet="tblExamRegistrations">
+                <ScalarProperty Name="ExamRegistrationId" ColumnName="ExamRegistrationId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="IsRegistred" ColumnName="IsRegistred" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExamResults">
+            <EntityTypeMapping TypeName="StudentDbModel.tblExamResults">
+              <MappingFragment StoreEntitySet="tblExamResults">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="ExamResultsId" ColumnName="ExamResultsId" />
+                <ScalarProperty Name="ExamRegistrationId" ColumnName="ExamRegistrationId" />
+                <ScalarProperty Name="TermPaper" ColumnName="TermPaper" />
+                <ScalarProperty Name="FirstTest" ColumnName="FirstTest" />
+                <ScalarProperty Name="SecondTest" ColumnName="SecondTest" />
+                <ScalarProperty Name="WritenExam" ColumnName="WritenExam" />
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExams">
+            <EntityTypeMapping TypeName="StudentDbModel.tblExams">
+              <MappingFragment StoreEntitySet="tblExams">
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="ExamPeriodId" ColumnName="ExamPeriodId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProfessors">
+            <EntityTypeMapping TypeName="StudentDbModel.tblProfessors">
+              <MappingFragment StoreEntitySet="tblProfessors">
+                <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="NameAndSurname" ColumnName="NameAndSurname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Education" ColumnName="Education" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudents">
+            <EntityTypeMapping TypeName="StudentDbModel.tblStudents">
+              <MappingFragment StoreEntitySet="tblStudents">
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="NameAndSurname" ColumnName="NameAndSurname" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="StudyYear" ColumnName="StudyYear" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStudyPrograms">
+            <EntityTypeMapping TypeName="StudentDbModel.tblStudyPrograms">
+              <MappingFragment StoreEntitySet="tblStudyPrograms">
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BudgetPlaces" ColumnName="BudgetPlaces" />
+                <ScalarProperty Name="SelffinancedPlaces" ColumnName="SelffinancedPlaces" />
+                <ScalarProperty Name="Tuition" ColumnName="Tuition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTasks">
+            <EntityTypeMapping TypeName="StudentDbModel.tblTasks">
+              <MappingFragment StoreEntitySet="tblTasks">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CourseView">
+            <EntityTypeMapping TypeName="StudentDbModel.CourseView">
+              <MappingFragment StoreEntitySet="CourseView">
+                <ScalarProperty Name="StudyProgramName" ColumnName="StudyProgramName" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="ProfessorId" ColumnName="ProfessorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Assistant" ColumnName="Assistant" />
+                <ScalarProperty Name="ETCS" ColumnName="ETCS" />
+                <ScalarProperty Name="ProfessorName" ColumnName="ProfessorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudentView">
+            <EntityTypeMapping TypeName="StudentDbModel.StudentView">
+              <MappingFragment StoreEntitySet="StudentView">
+                <ScalarProperty Name="StudyProgramName" ColumnName="StudyProgramName" />
+                <ScalarProperty Name="DepartmantName" ColumnName="DepartmantName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="NameAndSurname" ColumnName="NameAndSurname" />
+                <ScalarProperty Name="BirthPlace" ColumnName="BirthPlace" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="StudyYear" ColumnName="StudyYear" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StudyProgramView">
+            <EntityTypeMapping TypeName="StudentDbModel.StudyProgramView">
+              <MappingFragment StoreEntitySet="StudyProgramView">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+                <ScalarProperty Name="StudyProgramId" ColumnName="StudyProgramId" />
+                <ScalarProperty Name="SPdepartmentId" ColumnName="SPdepartmentId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BudgetPlaces" ColumnName="BudgetPlaces" />
+                <ScalarProperty Name="SelffinancedPlaces" ColumnName="SelffinancedPlaces" />
+                <ScalarProperty Name="Tuition" ColumnName="Tuition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamView">
+            <EntityTypeMapping TypeName="StudentDbModel.ExamView">
+              <MappingFragment StoreEntitySet="ExamView">
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="ExamPeriodName" ColumnName="ExamPeriodName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="IsPassed" ColumnName="IsPassed" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="ExamPeriodId" ColumnName="ExamPeriodId" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamRegistrationView">
+            <EntityTypeMapping TypeName="StudentDbModel.ExamRegistrationView">
+              <MappingFragment StoreEntitySet="ExamRegistrationView">
+                <ScalarProperty Name="NameAndSurname" ColumnName="NameAndSurname" />
+                <ScalarProperty Name="IsRegistred" ColumnName="IsRegistred" />
+                <ScalarProperty Name="ExamId" ColumnName="ExamId" />
+                <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+                <ScalarProperty Name="ExamRegistrationId" ColumnName="ExamRegistrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExamResultView">
+            <EntityTypeMapping TypeName="StudentDbModel.ExamResultView">
+              <MappingFragment StoreEntitySet="ExamResultView">
+                <ScalarProperty Name="Evaluation" ColumnName="Evaluation" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="WritenExam" ColumnName="WritenExam" />
+                <ScalarProperty Name="SecondTest" ColumnName="SecondTest" />
+                <ScalarProperty Name="FirstTest" ColumnName="FirstTest" />
+                <ScalarProperty Name="TermPaper" ColumnName="TermPaper" />
+                <ScalarProperty Name="ExamRegistrationId" ColumnName="ExamRegistrationId" />
+                <ScalarProperty Name="ExamResultsId" ColumnName="ExamResultsId" />
+                <ScalarProperty Name="NameAndSurname" ColumnName="NameAndSurname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

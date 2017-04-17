@@ -1,0 +1,34 @@
+﻿<Window x:Class="WPFProfessor.Views.ResultsView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFProfessor.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        Title="ResultsView" Height="400" Width="600" x:Name="ResultView">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Exam Results Information"/>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="dgExamResults" CellEditEnding="dgExamResults_CellEditEnding" 
+                      AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ExamRegId" Binding="{Binding ExamRegistrationId}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="Name" Binding="{Binding StudentNameAndSurname}" IsReadOnly="True"/>
+                    <DataGridTextColumn Header="First Test" Binding="{Binding FirstTest}"/>
+                    <DataGridTextColumn Header="Second Test" Binding="{Binding SecondTest}"/>
+                    <DataGridTextColumn Header="Term Paper" Binding="{Binding TermPaper}"/>
+                    <DataGridTextColumn Header="Writen Exam" Binding="{Binding WritenExam}"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding Total}"/>
+                    <DataGridTextColumn Header="Evaluation" Binding="{Binding Evaluation}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+        <Button x:Name="btnConfirmResults" Grid.Row="2" Content="Confirm Results" HorizontalAlignment="Right" Command="{Binding ConfirmResults}"/>
+    </Grid>
+</Window>
