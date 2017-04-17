@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFProfessor.Views;
@@ -18,6 +20,8 @@ namespace WPFProfessor.ViewModels
         private ObservableCollection<ExamRegistration> students;
         private ObservableCollection<TabItem> examPeriodTabs;
         private ICommand setResults;
+        private DateTime dateAndTime;
+        private string place;
 
         #endregion
 
@@ -79,6 +83,26 @@ namespace WPFProfessor.ViewModels
             }
         }
 
+        public DateTime DateAndTime
+        {
+            get { return dateAndTime; }
+            set
+            {
+                dateAndTime = value;
+                OnPropertyChanged("DateAndTime");
+            }
+        }
+
+        public string Place
+        {
+            get { return place; }
+            set
+            {
+                place = value;
+                OnPropertyChanged("Place");
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -94,10 +118,16 @@ namespace WPFProfessor.ViewModels
                 return 0;
             }
         }
+        
 
         private void CbxCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Students = new ObservableCollection<ExamRegistration>(ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag()));
+            var regStudents = ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag());
+            Students = new ObservableCollection<ExamRegistration>(regStudents.Keys.First());
+
+            var examInfos = regStudents.Values.First();
+            DateAndTime = (DateTime)examInfos[0];
+            Place = (string)examInfos[1];
         }
 
         private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -105,7 +135,12 @@ namespace WPFProfessor.ViewModels
             if (CourseId == 0)
                 return;
 
-            Students = new ObservableCollection<ExamRegistration>(ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag()));
+            var regStudents = ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag());
+            Students = new ObservableCollection<ExamRegistration>(regStudents.Keys.First());
+
+            var examInfos = regStudents.Values.First();
+            DateAndTime = (DateTime)examInfos[0];
+            Place = (string)examInfos[1];
         }
 
         #endregion

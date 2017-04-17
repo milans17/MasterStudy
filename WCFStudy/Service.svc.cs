@@ -796,7 +796,7 @@ namespace WCFStudy
             }
         }
 
-        public IEnumerable<ExamRegistration> GetRegistredStudentsForExam(int courseId, int examPeriodId)
+        public Dictionary<List<ExamRegistration>, object[]> GetRegistredStudentsForExam(int courseId, int examPeriodId)
         {
             using (StudentDbEntities dbContext = new StudentDbEntities())
             {
@@ -805,7 +805,10 @@ namespace WCFStudy
                 var exam = dbContext.tblExams.FirstOrDefault(x => x.ExamPeriodId == examPeriodId && x.CourseId == courseId);
 
                 if (exam == null)
-                    return new List<ExamRegistration>();
+                    return new Dictionary<List<ExamRegistration>, object[]>();
+
+                //Get Info about Exam
+                object[] examInfo = new object[] { exam.DateAndTime, exam.Place };
 
                 var dbStudentIds = (from s in dbContext.tblStudents
                                     select s.StudentId).ToList();
@@ -817,22 +820,22 @@ namespace WCFStudy
 
                 foreach (var examReg in examQuery)
                 {
-                    foreach (var dbStudentId in dbStudentIds)
+                    if (dbStudentIds.Contains(examReg.StudentId))
                     {
-                        if (examReg.StudentId == dbStudentId)
+                        ExamRegistration examRegistration = new ExamRegistration()
                         {
-                            ExamRegistration examRegistration = new ExamRegistration()
-                            {
-                                ExamRegistrationId = examReg.ExamRegistrationId,
-                                StudentNameAndSurname = examReg.NameAndSurname
-                            };
+                            ExamRegistrationId = examReg.ExamRegistrationId,
+                            StudentNameAndSurname = examReg.NameAndSurname
+                        };
 
-                            examRegistrations.Add(examRegistration);
-                        }
+                        examRegistrations.Add(examRegistration);
                     }
                 }
 
-                return examRegistrations;
+                return new Dictionary<List<ExamRegistration>, object[]>()
+                {
+                    { examRegistrations, examInfo }
+                };
             }
         }
 

@@ -222,7 +222,7 @@ namespace WPFStudy.DataProvider
             return proxy.GetProfessorCourses(professorId);
         }
 
-        public static IEnumerable<ExamRegistration> GetRegistredStudentsForExam(int courseId, int examPeriodId)
+        public static Dictionary<List<ExamRegistration>, List<object>> GetRegistredStudentsForExam(int courseId, int examPeriodId)
         {
             return proxy.GetRegistredStudentsForExam(courseId, examPeriodId);
         }

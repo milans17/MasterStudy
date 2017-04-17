@@ -1730,10 +1730,10 @@ namespace WPFStudy.ServiceReference {
         System.Threading.Tasks.Task<System.Collections.Generic.List<WPFStudy.ServiceReference.Course>> GetProfessorCoursesAsync(int professorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRegistredStudentsForExam", ReplyAction="http://tempuri.org/IService/GetRegistredStudentsForExamResponse")]
-        System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration> GetRegistredStudentsForExam(int courseId, int examPeriodId);
+        System.Collections.Generic.Dictionary<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>, System.Collections.Generic.List<object>> GetRegistredStudentsForExam(int courseId, int examPeriodId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetRegistredStudentsForExam", ReplyAction="http://tempuri.org/IService/GetRegistredStudentsForExamResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>> GetRegistredStudentsForExamAsync(int courseId, int examPeriodId);
+        System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>, System.Collections.Generic.List<object>>> GetRegistredStudentsForExamAsync(int courseId, int examPeriodId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SetExamResults", ReplyAction="http://tempuri.org/IService/SetExamResultsResponse")]
         bool SetExamResults(System.Collections.Generic.List<WPFStudy.ServiceReference.ExamResult> examResults);
@@ -2029,11 +2029,11 @@ namespace WPFStudy.ServiceReference {
             return base.Channel.GetProfessorCoursesAsync(professorId);
         }
         
-        public System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration> GetRegistredStudentsForExam(int courseId, int examPeriodId) {
+        public System.Collections.Generic.Dictionary<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>, System.Collections.Generic.List<object>> GetRegistredStudentsForExam(int courseId, int examPeriodId) {
             return base.Channel.GetRegistredStudentsForExam(courseId, examPeriodId);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>> GetRegistredStudentsForExamAsync(int courseId, int examPeriodId) {
+        public System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<System.Collections.Generic.List<WPFStudy.ServiceReference.ExamRegistration>, System.Collections.Generic.List<object>>> GetRegistredStudentsForExamAsync(int courseId, int examPeriodId) {
             return base.Channel.GetRegistredStudentsForExamAsync(courseId, examPeriodId);
         }
         

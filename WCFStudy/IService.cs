@@ -122,7 +122,7 @@ namespace WCFStudy
         IEnumerable<Course> GetProfessorCourses(int professorId);
 
         [OperationContract]
-        IEnumerable<ExamRegistration> GetRegistredStudentsForExam(int courseId, int examPeriodId);
+        Dictionary<List<ExamRegistration>, object[]> GetRegistredStudentsForExam(int courseId, int examPeriodId);
 
         [OperationContract]
         bool SetExamResults(List<ExamResult> examResults);
