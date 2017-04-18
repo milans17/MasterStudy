@@ -35,11 +35,11 @@
 
                 <Label Grid.Row="2" Grid.Column="0" Content="StudyProgram:" HorizontalContentAlignment="Right"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbxStudyPrograms" Margin="2 2 2 2" ItemsSource="{Binding StudyPrograms}" DisplayMemberPath="Name"
-                          SelectedValuePath="StudyProgramId" SelectedValue="{Binding StudyProgramId, Mode=TwoWay}"/>
+                          SelectedValuePath="StudyProgramId" SelectedValue="{Binding StudyProgramId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Professor:" HorizontalContentAlignment="Right"/>
                 <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cbxProfessors" Margin="2 2 2 2" ItemsSource="{Binding Professors}" DisplayMemberPath="NameAndSurname"
-                          SelectedValuePath="ProfessorId" SelectedValue="{Binding ProfessorId, Mode=TwoWay}"/>
+                          SelectedValuePath="ProfessorId" SelectedValue="{Binding ProfessorId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="4" Grid.Column="0" Content="Assistant:" HorizontalContentAlignment="Right"/>
                 <TextBox Grid.Row="4" Grid.Column="1" Margin="2 2 2 2" Text="{Binding Assistant}"/>

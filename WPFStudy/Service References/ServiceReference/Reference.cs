@@ -1372,7 +1372,7 @@ namespace WPFStudy.ServiceReference {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> EvaluationField;
+        private int EvaluationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ExamRegistrationIdField;
@@ -1381,22 +1381,22 @@ namespace WPFStudy.ServiceReference {
         private int ExamResultsIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> FirstTestField;
+        private int FirstTestField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> SecondTestField;
+        private int SecondTestField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StudentNameAndSurnameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> TermPaperField;
+        private int TermPaperField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> TotalField;
+        private int TotalField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> WritenExamField;
+        private int WritenExamField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1409,7 +1409,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Evaluation {
+        public int Evaluation {
             get {
                 return this.EvaluationField;
             }
@@ -1448,7 +1448,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> FirstTest {
+        public int FirstTest {
             get {
                 return this.FirstTestField;
             }
@@ -1461,7 +1461,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> SecondTest {
+        public int SecondTest {
             get {
                 return this.SecondTestField;
             }
@@ -1487,7 +1487,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> TermPaper {
+        public int TermPaper {
             get {
                 return this.TermPaperField;
             }
@@ -1500,7 +1500,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Total {
+        public int Total {
             get {
                 return this.TotalField;
             }
@@ -1513,7 +1513,7 @@ namespace WPFStudy.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> WritenExam {
+        public int WritenExam {
             get {
                 return this.WritenExamField;
             }

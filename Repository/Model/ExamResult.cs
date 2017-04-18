@@ -12,16 +12,16 @@ namespace Repository.Model
         [DataMember]
         public string StudentNameAndSurname { get; set; }
         [DataMember]
-        public int? TermPaper { get; set; }
+        public int TermPaper { get; set; }
         [DataMember]
-        public int? FirstTest { get; set; }
+        public int FirstTest { get; set; }
         [DataMember]
-        public int? SecondTest { get; set; }
+        public int SecondTest { get; set; }
         [DataMember]
-        public int? WritenExam { get; set; }
+        public int WritenExam { get; set; }
         [DataMember]
-        public int? Total { get; set; }
+        public int Total { get; set; }
         [DataMember]
-        public int? Evaluation { get; set; }
+        public int Evaluation { get; set; }
     }
 }

@@ -161,15 +161,15 @@
   <xs:element name="ArrayOfExamResult" nillable="true" type="tns:ArrayOfExamResult" />
   <xs:complexType name="ExamResult">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Evaluation" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Evaluation" type="xs:int" />
       <xs:element minOccurs="0" name="ExamRegistrationId" type="xs:int" />
       <xs:element minOccurs="0" name="ExamResultsId" type="xs:int" />
-      <xs:element minOccurs="0" name="FirstTest" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="SecondTest" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="FirstTest" type="xs:int" />
+      <xs:element minOccurs="0" name="SecondTest" type="xs:int" />
       <xs:element minOccurs="0" name="StudentNameAndSurname" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="TermPaper" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="Total" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="WritenExam" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="TermPaper" type="xs:int" />
+      <xs:element minOccurs="0" name="Total" type="xs:int" />
+      <xs:element minOccurs="0" name="WritenExam" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ExamResult" nillable="true" type="tns:ExamResult" />

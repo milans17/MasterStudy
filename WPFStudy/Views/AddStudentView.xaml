@@ -48,12 +48,12 @@
                 <Label Grid.Row="2" Grid.Column="0" Content="Department:" HorizontalContentAlignment="Right"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbxDepartments" Margin="2 2 2 2" ItemsSource="{Binding Departments}"
                       DisplayMemberPath="Name" SelectedValuePath="DepartmentId" 
-                      SelectedValue="{Binding Path=DepartmentId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                      SelectedValue="{Binding Path=DepartmentId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Study Program:" HorizontalContentAlignment="Right"/>
                 <ComboBox Grid.Row="3" Grid.Column="1" x:Name="cbxStudyPrograms" Margin="2 2 2 2"
                       DisplayMemberPath="Name" SelectedValuePath="StudyProgramId" 
-                      SelectedValue="{Binding Path=StudyProgramId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                      SelectedValue="{Binding Path=StudyProgramId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="4" Content="Address:" Grid.Column="0" HorizontalContentAlignment="Right"/>
                 <TextBox x:Name="txtAddress" Grid.Row="4" Grid.Column="1" Margin="2 2 2 2" Text="{Binding Address}"/>

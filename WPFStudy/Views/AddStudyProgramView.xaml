@@ -36,7 +36,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Content="Department:" HorizontalContentAlignment="Right"/>
                 <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbxDepartments" Margin="2 2 2 2" ItemsSource="{Binding Departments}" 
                           DisplayMemberPath="Name" SelectedValuePath="DepartmentId" 
-                          SelectedValue="{Binding DepartmentId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                          SelectedValue="{Binding DepartmentId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Selffinanced Places:" HorizontalContentAlignment="Right"/>
                 <TextBox Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" Text="{Binding SelffinancedPlaces}"/>

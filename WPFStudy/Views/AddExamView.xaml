@@ -33,11 +33,11 @@
 
                 <Label Grid.Row="2" Grid.Column="0" Content="Exam Period:" HorizontalContentAlignment="Right"/>
                 <ComboBox x:Name="cbxExamPeriod" Grid.Row="2" Grid.Column="1" Margin="2 2 2 2" ItemsSource="{Binding ExamPeriods}" DisplayMemberPath="Name"
-                          SelectedValuePath="ExamPeriodId" SelectedValue="{Binding ExamPeriodId, Mode=TwoWay}"/>
+                          SelectedValuePath="ExamPeriodId" SelectedValue="{Binding ExamPeriodId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="3" Grid.Column="0" Content="Course:" HorizontalContentAlignment="Right"/>
                 <ComboBox x:Name="cbxCourses" Grid.Row="3" Grid.Column="1" Margin="2 2 2 2" ItemsSource="{Binding Courses}" DisplayMemberPath="Name"
-                          SelectedValuePath="CourseId" SelectedValue="{Binding CourseId, Mode=TwoWay}"/>
+                          SelectedValuePath="CourseId" SelectedValue="{Binding CourseId, Mode=OneWayToSource}"/>
 
                 <Label Grid.Row="4" Grid.Column="0" Content="Date and Time:" HorizontalContentAlignment="Right"/>
                 <xctk:DateTimeUpDown x:Name="dpDateAndTime" Grid.Row="4" Grid.Column="1" Margin="2 2 2 2"

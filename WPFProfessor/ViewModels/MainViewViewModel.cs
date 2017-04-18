@@ -20,7 +20,7 @@ namespace WPFProfessor.ViewModels
         private ObservableCollection<ExamRegistration> students;
         private ObservableCollection<TabItem> examPeriodTabs;
         private ICommand setResults;
-        private DateTime dateAndTime;
+        private DateTime? dateAndTime;
         private string place;
 
         #endregion
@@ -37,20 +37,19 @@ namespace WPFProfessor.ViewModels
             {
                 examPeriodTabs.Add(new TabItem() { Header = activeExamPeriod.Name, Tag = activeExamPeriod.ExamPeriodId });
             }
-
-            view.Tabcontrol.SelectedIndex = 0;
+            
             Courses = ServiceDataProvider.GetProfessorCourses(4);
             students = new ObservableCollection<ExamRegistration>();
-            view.OnSelectionComboBoxChanged = CbxCourses_SelectionChanged;
-            view.OnSelectionTabControlChanged = Tabcontrol_SelectionChanged;
+            view.Tabcontrol.SelectedIndex = 0;
+            view.cbxCourses.SelectedIndex = 0;
+            view.OnSelectionComboBoxChanged = delegate { ProvideRegistredStudentsAndExamInfo(); };
+            view.OnSelectionTabControlChanged = delegate { ProvideRegistredStudentsAndExamInfo(); };
         }
 
         #endregion
 
         #region Properties
 
-        public TabItem ExamPeriodTab { get; set; }
-        
         public ObservableCollection<TabItem> ExamPeriodTabs
         {
             get { return examPeriodTabs; }
@@ -83,7 +82,7 @@ namespace WPFProfessor.ViewModels
             }
         }
 
-        public DateTime DateAndTime
+        public DateTime? DateAndTime
         {
             get { return dateAndTime; }
             set
@@ -115,32 +114,24 @@ namespace WPFProfessor.ViewModels
             }
             else
             {
-                return 0;
+                throw new ArgumentException("Exam Period Id not found on Tab Item Tag");
             }
         }
-        
 
-        private void CbxCourses_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var regStudents = ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag());
-            Students = new ObservableCollection<ExamRegistration>(regStudents.Keys.First());
-
-            var examInfos = regStudents.Values.First();
-            DateAndTime = (DateTime)examInfos[0];
-            Place = (string)examInfos[1];
-        }
-
-        private void Tabcontrol_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ProvideRegistredStudentsAndExamInfo()
         {
             if (CourseId == 0)
                 return;
 
             var regStudents = ServiceDataProvider.GetRegistredStudentsForExam(CourseId, GetExamPeriodIdFromTag());
-            Students = new ObservableCollection<ExamRegistration>(regStudents.Keys.First());
 
-            var examInfos = regStudents.Values.First();
-            DateAndTime = (DateTime)examInfos[0];
-            Place = (string)examInfos[1];
+            if (regStudents.Count == 1)
+            {
+                Students = new ObservableCollection<ExamRegistration>(regStudents.Keys.First());
+                var examInfos = regStudents.Values.First();
+                DateAndTime = (DateTime)examInfos[0];
+                Place = (string)examInfos[1];
+            }
         }
 
         #endregion
